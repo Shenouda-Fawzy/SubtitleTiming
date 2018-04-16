@@ -220,4 +220,54 @@ public class TimerTest {
         int result = instance.convertToSeconds(time);
         assertEquals(expResult, result);
     }
+    
+     /*
+                    ====================                    
+                      convertToTimeFormat    
+                    ====================  
+    */
+    
+    @Test
+    public void convertToTimeFormat() {
+        System.out.println("convertToTimeFormat");
+        int sec = 3600;
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "01:00:00,000";
+        String result = instance.convertToTimeFormat(sec);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void convertToTimeFormat3710Sec() {
+        System.out.println("convertToTimeFormat3710Sec");
+        int sec = 3710;
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "01:01:50,000";
+        String result = instance.convertToTimeFormat(sec);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void convertToTimeFormat712Sec() {
+        System.out.println("convertToTimeFormat712Sec");
+        int sec = 712;
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:11:52,000";
+        String result = instance.convertToTimeFormat(sec);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void convertToTimeFormat44Sec() {
+        System.out.println("convertToTimeFormat44Sec");
+        int sec = 44;
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:00:44,000";
+        String result = instance.convertToTimeFormat(sec);
+        assertEquals(expResult, result);
+
+    }
 }

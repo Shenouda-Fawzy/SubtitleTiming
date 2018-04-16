@@ -96,7 +96,11 @@ public class Timer {
     
     public String decreesSeconds(int sec, String oldTime){
         extractTimeDetails(oldTime);
-        
+        /*
+        - Convert to Second
+        - Subtract seconds
+        - Convert to time format hh:mm:ss,mil
+        */
         this.sec -= sec;
         while(this.sec < 0){
             if(min <= 0)
@@ -142,5 +146,16 @@ public class Timer {
         extractTimeDetails(time);
         int totalSec = (hr * 60 * 60) + (min * 60) + sec;
         return totalSec;
+    }
+    
+    protected String convertToTimeFormat(int sec){
+        int h = sec / 3600;
+        int remSec = sec % 3600;
+        int minut = remSec / 60;
+        int s = remSec % 60;
+        
+        String convertedTime = putTimeInFormat(h, minut, s, milSec);
+        
+        return convertedTime;
     }
 }
