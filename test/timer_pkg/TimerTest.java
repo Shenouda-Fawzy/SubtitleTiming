@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author shero
+ * @author Shenouda Fawzy
  */
 public class TimerTest {
     
@@ -37,12 +37,19 @@ public class TimerTest {
     public void tearDown() {
     }
 
+    
+    /*
+                    ====================                    
+                      increesSeconds    
+                    ====================  
+    */
+    
     /**
      * Test of increesSeconds method, of class Timer.
      */
     @Test
     public void testIncreesSeconds() {
-        System.out.println("increesSeconds");
+        System.out.println("testIncreesSeconds");
         int sec = 1;
         String oldTime = "00:00:00,000";
         Timer instance = new Timer(0, 0, 0, 0);
@@ -52,12 +59,18 @@ public class TimerTest {
 
     }
 
+    /*
+                    ====================                    
+                      decreesSeconds    
+                    ====================  
+    */
+    
     /**
      * Test of decreesSeconds method, of class Timer.
      */
     @Test
     public void testDecreesSeconds() {
-        System.out.println("decreesSeconds");
+        System.out.println("testDecreesSeconds");
         int sec = 1;
         String oldTime = "00:00:01,000";
         Timer instance = new Timer(0, 0, 0, 0);
@@ -69,7 +82,7 @@ public class TimerTest {
     
     @Test
     public void testDecreesSecondsWithMinus() {
-        System.out.println("decreesSeconds");
+        System.out.println("testDecreesSecondsWithMinus");
         int sec = 20;
         String oldTime = "00:00:30,789";
         Timer instance = new Timer(0, 0, 0, 0);
@@ -84,7 +97,7 @@ public class TimerTest {
      */
     @Test
     public void testDecreesSecondsAndMinutes() {
-        System.out.println("decreesSeconds");
+        System.out.println("testDecreesSecondsAndMinutes");
         int sec = 20;
         String oldTime = "00:01:30,789";
         Timer instance = new Timer(0, 0, 0, 0);
@@ -99,7 +112,7 @@ public class TimerTest {
      */
     @Test
     public void testDecreesSecondsAndMinutesWithMinus() {
-        System.out.println("decreesSeconds");
+        System.out.println("testDecreesSecondsAndMinutesWithMinus");
         int sec = 70;
         String oldTime = "00:01:30,789";
         Timer instance = new Timer(0, 0, 0, 0);
@@ -109,4 +122,102 @@ public class TimerTest {
 
     }
     
+     /**
+     *
+     */
+    @Test
+    public void testDecreesSecondsToMinus() {
+        System.out.println("testDecreesSecondsToMinus");
+        int sec = 91;
+        String oldTime = "00:01:30,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:00:00,789";
+        String result = instance.decreesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void testDecreseSecondWithHour() {
+        System.out.println("testDecreseSecondWithHour");
+        int sec = 90;
+        String oldTime = "01:01:30,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "01:00:00,789";
+        String result = instance.decreesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void testDecreseSecondToHour() {
+        System.out.println("testDecreseSecondWithHour");
+        int sec = 91;
+        String oldTime = "01:01:30,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:59:00,789";
+        String result = instance.decreesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
+    /*
+                    ====================                    
+                      convertToSecond    
+                    ====================  
+    */
+    
+    /**
+     * Test of convertToSecond method, of class Timer.
+     */
+    
+    @Test
+    public void testConvertOneHourToSeconds(){
+        System.out.println("testConvertOneHourToSeconds");
+        String time = "01:00:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        int expResult = 3600;
+        int result = instance.convertToSeconds(time);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testConvertOneHourWithMinToSeconds(){
+        System.out.println("testConvertOneHourToSeconds");
+        String time = "01:02:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        int expResult = 3720;
+        int result = instance.convertToSeconds(time);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testConvertOneHourWithMinToSeconds2(){
+        System.out.println("testConvertOneHourToSeconds");
+        String time = "01:22:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        int expResult = 4920;
+        int result = instance.convertToSeconds(time);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testConvertOneMinToSeconds(){
+        System.out.println("testConvertOneMinToSeconds");
+        String time = "00:01:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        int expResult = 60;
+        int result = instance.convertToSeconds(time);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testConvertOneMinWithSecToSeconds(){
+        System.out.println("testConvertOneMinToSeconds");
+        String time = "00:01:15,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        int expResult = 75;
+        int result = instance.convertToSeconds(time);
+        assertEquals(expResult, result);
+    }
 }

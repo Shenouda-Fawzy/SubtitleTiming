@@ -6,6 +6,9 @@
 
 package timer_pkg;
 
+import java.time.LocalTime;
+import javafx.util.converter.LocalTimeStringConverter;
+
 /**
  *
  * @author Shenouda Fawzy
@@ -93,22 +96,28 @@ public class Timer {
     
     public String decreesSeconds(int sec, String oldTime){
         extractTimeDetails(oldTime);
+        
         this.sec -= sec;
         while(this.sec < 0){
+            if(min <= 0)
+                break;
             this.sec += 60;
             min--;
         }
         
-        while(this.min < 0){
-            this.min += 60;
-            hr--;
-        }
-        
-        if(hr < 0 )
+        if(hr > 0 )
+            while(this.min < 0){
+                this.min += 60;
+                hr--;
+            }
+        else
             hr = 0;
         
         if(min < 0)
             min = 0;
+        
+        if(hr <= 0 && min <= 0 && this.sec <= 0)
+            this.sec = 0;
         
         this.newTime = putTimeInFormat(this.hr, this.min, this.sec, this.milSec);
         
@@ -127,5 +136,11 @@ public class Timer {
         min = Integer.parseInt(sMin);
         sec = Integer.parseInt(sSec);
         milSec = Integer.parseInt(sMilSec);
+    }
+    
+    protected int convertToSeconds(String time){
+        extractTimeDetails(time);
+        int totalSec = (hr * 60 * 60) + (min * 60) + sec;
+        return totalSec;
     }
 }
