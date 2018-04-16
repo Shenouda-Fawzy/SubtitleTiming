@@ -155,7 +155,7 @@ public class TimerTest {
         int sec = 91;
         String oldTime = "01:01:30,789";
         Timer instance = new Timer(0, 0, 0, 0);
-        String expResult = "00:59:00,789";
+        String expResult = "00:59:59,789";
         String result = instance.decreesSeconds(sec, oldTime);
         assertEquals(expResult, result);
 

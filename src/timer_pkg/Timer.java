@@ -101,31 +101,15 @@ public class Timer {
         - Subtract seconds
         - Convert to time format hh:mm:ss,mil
         */
-        this.sec -= sec;
-        while(this.sec < 0){
-            if(min <= 0)
-                break;
-            this.sec += 60;
-            min--;
-        }
+        int seconds = convertToSeconds(oldTime);
+        seconds -= sec;
         
-        if(hr > 0 )
-            while(this.min < 0){
-                this.min += 60;
-                hr--;
-            }
-        else
-            hr = 0;
-        
-        if(min < 0)
-            min = 0;
-        
-        if(hr <= 0 && min <= 0 && this.sec <= 0)
-            this.sec = 0;
-        
-        this.newTime = putTimeInFormat(this.hr, this.min, this.sec, this.milSec);
-        
-        return newTime;
+        String nTime = "" ; 
+        if(seconds >= 0)
+            nTime = convertToTimeFormat(seconds);
+        else 
+            nTime = convertToTimeFormat(0);
+        return nTime;
     }
     
     private void extractTimeDetails(String oldTime){
