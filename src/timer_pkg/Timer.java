@@ -142,4 +142,11 @@ public class Timer {
         
         return convertedTime;
     }
+    
+    protected static String [] getTokens(String subTitle){
+        String [] lines = subTitle.trim().split("\n");
+        String [] tokens = lines[1].trim().split(" --> ");
+        
+        return tokens;
+    }
 }
