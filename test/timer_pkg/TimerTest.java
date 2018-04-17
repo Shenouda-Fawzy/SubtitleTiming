@@ -59,6 +59,42 @@ public class TimerTest {
 
     }
 
+    @Test
+    public void testIncrees120Seconds() {
+        System.out.println("testIncrees120Seconds");
+        int sec = 120;
+        String oldTime = "00:00:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:02:00,789";
+        String result = instance.increesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void testIncrees125Seconds() {
+        System.out.println("testIncrees120Seconds");
+        int sec = 125;
+        String oldTime = "00:02:00,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "00:04:05,789";
+        String result = instance.increesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
+    @Test
+    public void testIncrees247Seconds() {
+        System.out.println("testIncrees120Seconds");
+        int sec = 247;
+        String oldTime = "01:59:10,789";
+        Timer instance = new Timer(0, 0, 0, 0);
+        String expResult = "02:03:17,789";
+        String result = instance.increesSeconds(sec, oldTime);
+        assertEquals(expResult, result);
+
+    }
+    
     /*
                     ====================                    
                       decreesSeconds    
