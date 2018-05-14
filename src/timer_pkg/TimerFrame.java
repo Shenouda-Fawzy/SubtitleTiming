@@ -6,11 +6,14 @@
 package timer_pkg;
 
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.TextField;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,8 +39,9 @@ public class TimerFrame extends javax.swing.JFrame {
     File selectedFile ;
     /**
      * Creates new form TimerFrame
+     * @throws java.net.URISyntaxException
      */
-    public TimerFrame() {
+    public TimerFrame() throws URISyntaxException {
         initComponents();
         srcFileName = "";
         srcFileDirectoryPath = "";
@@ -48,6 +52,9 @@ public class TimerFrame extends javax.swing.JFrame {
 // To Allow only digit inputs        
         JFormattedTextField txt = ((JSpinner.NumberEditor) secSpinner.getEditor()).getTextField();
         ((NumberFormatter) txt.getFormatter()).setAllowsInvalid(false);
+        
+        uri = new URI("https://eg.linkedin.com/in/shenoudafawzy");
+        aboutMe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
     }
 
@@ -72,6 +79,7 @@ public class TimerFrame extends javax.swing.JFrame {
         changTimeBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        aboutMe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Time Modifer");
@@ -146,7 +154,15 @@ public class TimerFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 153));
 
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel3.setText("This tool programmed by Shenouda Fawzy");
+        jLabel3.setText("This tool programmed by ");
+
+        aboutMe.setForeground(new java.awt.Color(153, 153, 153));
+        aboutMe.setText("Shenuoda Fawzy");
+        aboutMe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goToMyAccount(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,6 +189,8 @@ public class TimerFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aboutMe)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -189,7 +207,9 @@ public class TimerFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(aboutMe))
                 .addContainerGap())
         );
 
@@ -242,6 +262,16 @@ public class TimerFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_changTimeBtnActionPerformed
 
+    private void goToMyAccount(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goToMyAccount
+         if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(uri);
+            } 
+            catch (IOException e) { /* TODO: error handling */ }
+        } else { /* TODO: error handling */ }
+    }//GEN-LAST:event_goToMyAccount
+
+    
     
     /**
      * @param args the command line arguments
@@ -302,7 +332,9 @@ public class TimerFrame extends javax.swing.JFrame {
         }
     }
 
+    private URI uri;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aboutMe;
     private javax.swing.JButton browseBtn;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton changTimeBtn;

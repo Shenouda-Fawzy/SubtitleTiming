@@ -172,11 +172,5 @@ public class Timer {
         return convertedTime;
     }
     
-    protected static String [] getTokens(String subTitle){
-        //String [] lines = subTitle.trim().split("\n");
-        String [] tokens = subTitle.trim().split(" --> ");
-        
-        return tokens;
-    }
 
 }

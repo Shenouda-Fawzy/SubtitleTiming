@@ -8,6 +8,7 @@ package timer_pkg;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +19,7 @@ import java.util.regex.Pattern;
  */
 public class Client {
 
-    public static void main(String[] str) throws FileNotFoundException {
+    public static void main(String[] str) throws FileNotFoundException, URISyntaxException {
         TimerFrame timeFrame = new TimerFrame();
         timeFrame.setVisible(true);
     }
