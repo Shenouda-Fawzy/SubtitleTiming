@@ -7,7 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Time Modifer"/>
+    <Property name="title" type="java.lang.String" value="Subtitle Modifer"/>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
       <Point value="[200, 200]"/>
     </Property>
@@ -214,7 +214,7 @@
     <Component class="javax.swing.JLabel" name="aboutMe">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
+          <Color blue="ff" green="0" id="blue" palette="1" red="0" type="palette"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Shenuoda Fawzy"/>
       </Properties>

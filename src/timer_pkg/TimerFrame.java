@@ -8,6 +8,7 @@ package timer_pkg;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.TextField;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -55,6 +56,7 @@ public class TimerFrame extends javax.swing.JFrame {
         
         uri = new URI("https://eg.linkedin.com/in/shenoudafawzy");
         aboutMe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/resource/Subtitle Icon.png")));
 
     }
 
@@ -82,7 +84,7 @@ public class TimerFrame extends javax.swing.JFrame {
         aboutMe = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Time Modifer");
+        setTitle("Subtitle Modifer");
         setLocation(new java.awt.Point(200, 200));
         setResizable(false);
 
@@ -156,7 +158,7 @@ public class TimerFrame extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("This tool programmed by ");
 
-        aboutMe.setForeground(new java.awt.Color(153, 153, 153));
+        aboutMe.setForeground(java.awt.Color.blue);
         aboutMe.setText("Shenuoda Fawzy");
         aboutMe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
